@@ -20,7 +20,7 @@ public class LogoutServlet extends HttpServlet {
     	//retirando a permissao para acessar a tela de gerenciamento
         HttpSession session = request.getSession(false);
         if (session != null) {
-            session.invalidate();
+        	session.setAttribute("isAuthenticated", false);
         }
         response.sendRedirect("login.jsp");  //redireciona para a tela de login
     }

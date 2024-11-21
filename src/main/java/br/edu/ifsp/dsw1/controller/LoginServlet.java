@@ -27,6 +27,7 @@ public class LoginServlet extends HttpServlet {
     	    	//armazenando o usuario na Session
     	    	HttpSession session = request.getSession(); 
     	        session.setAttribute("user", username);
+    	        session.setAttribute("isAuthenticated", true);
     	        
     	        response.sendRedirect("management.jsp"); //direcionando a tela de gerenciamento de voos [exclusiva para admins]
     	    } else {
