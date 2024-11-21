@@ -22,4 +22,10 @@ public class Boarding implements State {
     public void change(FlightData flight) {
         flight.setState(TakingOff.getInstance()); // Muda para TakingOff
     }
+    
+    @Override
+    public String toString() {
+		return "Boarding";
+    	
+    }
 }

@@ -22,4 +22,10 @@ public class TookOff implements State {
     public void change(FlightData flight) {
     	flight.setState(this); //seta esse mesmo estado ja que sera removido no updateFlights caso chegue nele
     }
+    
+    @Override
+    public String toString() {
+		return "TookOff";
+    	
+    }
 }

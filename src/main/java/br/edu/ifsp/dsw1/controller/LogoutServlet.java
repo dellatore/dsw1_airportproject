@@ -22,7 +22,7 @@ public class LogoutServlet extends HttpServlet {
         if (session != null) {
         	session.setAttribute("isAuthenticated", false);
         }
-        response.sendRedirect("login.jsp");  //redireciona para a tela de login
+        response.sendRedirect("index.jsp");  //redireciona para a tela de login
     }
 
 }

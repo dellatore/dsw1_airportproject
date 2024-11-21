@@ -30,12 +30,11 @@
 	
 		<!-- div com os links para as telas dos totens -->
 		<div class="list-group">
-		  <a class="list-group-item list-group-item-primary">Totens</a>
-		  <!-- Lista com todos os Totens e suas respectivas páginas -->
-		  <a href="#" class="list-group-item list-group-item-action">Hall 01</a>
-		  <a href="#" class="list-group-item list-group-item-action">Hall 02</a>
-		  <a href="#" class="list-group-item list-group-item-action">Departure Lounge</a>
-		  <a href="#" class="list-group-item list-group-item-action">Arrivals Hall</a>
+		    <a class="list-group-item list-group-item-primary">Totens</a>
+		    <a href="totem?totem=hall1" class="list-group-item list-group-item-action">Hall 01</a>
+		    <a href="totem?totem=hall2" class="list-group-item list-group-item-action">Hall 02</a>
+		    <a href="totem?totem=departureLounge" class="list-group-item list-group-item-action">Departure Lounge</a>
+		    <a href="totem?totem=arrivalsHall" class="list-group-item list-group-item-action">Arrivals Hall</a>
 		</div>
 	</div>
 	

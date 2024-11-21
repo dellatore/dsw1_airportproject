@@ -44,27 +44,27 @@ public class FlightDataCollection implements FlightDataSubject {
         }
     }
 
-    public List<FlightData> updateFlight(Long flightNumber, List<FlightData> listaAntiga) {
+    public List<FlightData> updateFlight(Long flightNumber, List<FlightData> oldlist) {
 
-    	FlightData alterado = null; //cria um novo aviao
+    	FlightData changed = null; //cria um novo aviao
     	
-    	for (int i = 0; i < listaAntiga.size(); i++) {
+    	for (int i = 0; i < oldlist.size(); i++) {
     		//verifica se o numero desse aviao esta na lista
-			if (listaAntiga.get(i).getFlightNumber().equals(flightNumber)) {
-				alterado = listaAntiga.get(i); //seta o aviao achado na lista para o alterado
-	            listaAntiga.remove(i); //remove o aviao da lista
-				alterado.getState().change(alterado); //altera o estado do aviao 
-				if (alterado.getState() instanceof TookOff) {
-	                return listaAntiga; // se chegar no TookOff ele remove permanente da lista
+			if (oldlist.get(i).getFlightNumber().equals(flightNumber)) {
+				changed = oldlist.get(i); //seta o aviao achado na lista para o changed
+	            oldlist.remove(i); //remove o aviao da lista
+				changed.getState().change(changed); //altera o estado do aviao 
+				if (changed.getState() instanceof TookOff) {
+	                return oldlist; // se chegar no TookOff ele remove permanente da lista
 	            }
-				lastUpdated = alterado; // seta a variavel do observer
-				listaAntiga.add(alterado); //adiciona novamente a lista
+				lastUpdated = changed; // seta a variavel do observer
+				oldlist.add(changed); //adiciona novamente a lista
 			}
 		}
     	
    
     	notifyObservers(); //notifica os observadores
-    	return listaAntiga; // retorna a lista que sera novamente salva na sess
+    	return oldlist; // retorna a lista que sera novamente salva na sess
     	
     }
 

@@ -18,4 +18,10 @@ public class Arriving implements State {
     public void change(FlightData flight) {
         flight.setState(Boarding.getInstance());  // Muda para o estado "Boarding"
     }
+    
+    @Override
+    public String toString() {
+		return "Arriving";
+    	
+    }
 }
