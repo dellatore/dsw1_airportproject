@@ -26,12 +26,13 @@ public class TotemServlet extends HttpServlet {
 
 	    private static final FlightDataCollection flightCollection = new FlightDataCollection();
 
-	    // Observadores para cada estado
+	    // inicializa observadores para cada totem
 	    private static final  TotemObserver hall1Observer = new TotemObserver("TakingOff");
 	    private  static final TotemObserver hall2Observer = new TotemObserver("TookOff");
 	    private static final TotemObserver departureLoungeObserver = new TotemObserver("Boarding");
 	    private  static final TotemObserver arrivalsTotemObserver = new TotemObserver("Arriving");
 
+	    //registra os tokens no observer 
 	    static {
 	        flightCollection.register(hall1Observer);
 	        flightCollection.register(hall2Observer);
@@ -45,9 +46,10 @@ public class TotemServlet extends HttpServlet {
 	        String totem = request.getParameter("totem");
 	        
 	        HttpSession session = request.getSession();
-	        System.out.print( session.getAttribute("flights"));
 
-	        List<FlightData> flights = (List<FlightData>) session.getAttribute("flights");
+	        List<FlightData> flights = (List<FlightData>) session.getAttribute("flights"); //pega todos os voos
+	        
+	        //adiciona os voos de acordo com o observer correspondente
 	        switch (totem) {
 	            case "hall1":
 	                flights = hall1Observer.getFilteredFlights(flights);
@@ -65,6 +67,7 @@ public class TotemServlet extends HttpServlet {
 	                flights = List.of();
 	        }
 
+	        //adiciona a session
 	        request.setAttribute("flights", flights);
 	        request.getRequestDispatcher("/totem.jsp").forward(request, response);
 	    }
